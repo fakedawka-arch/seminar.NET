@@ -176,6 +176,15 @@ namespace Tyrtyvshin
 
         private void DgvMovies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            string? trailerPath = FindTrailer(folderPath, movieTitle);
+            if (trailerPath != null)
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = trailerPath,
+                    UseShellExecute = true 
+                });
+            }
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvMovies.Rows[e.RowIndex];
@@ -188,9 +197,7 @@ namespace Tyrtyvshin
                 string movieTitle = row.Cells["title"].Value?.ToString() ?? "";
                 string folderPath = Application.StartupPath;
 
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-                string foundPath = FindPoster(folderPath, movieTitle);
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                string? foundPath = FindPoster(folderPath, movieTitle);
 
                 if (foundPath != null)
                 {

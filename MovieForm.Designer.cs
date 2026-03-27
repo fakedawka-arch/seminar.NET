@@ -28,6 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.wmpPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.wmpPlayer.Location = new System.Drawing.Point(500, 300);
+            this.wmpPlayer.Size = new System.Drawing.Size(400, 250);
+            this.wmpPlayer.Name = "wmpPlayer";
+            this.Controls.Add(this.wmpPlayer);
+            ((System.ComponentModel.ISupportInitialize)wmpPlayer).BeginInit(); // ← ЭНД нэмэх
+            SuspendLayout();
             dgvMovies = new DataGridView();
             movieID = new TextBox();
             title = new TextBox();
@@ -170,7 +177,7 @@
             // 
             pctrbox1.Location = new Point(512, 12);
             pctrbox1.Name = "pctrbox1";
-            pctrbox1.Size = new Size(290, 288);
+            pctrbox1.Size = new Size(531, 601);
             pctrbox1.TabIndex = 13;
             pctrbox1.TabStop = false;
             pctrbox1.Click += pictureBox1_Click;
@@ -179,7 +186,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(831, 625);
+            ClientSize = new Size(1055, 625);
             Controls.Add(pctrbox1);
             Controls.Add(label3);
             Controls.Add(label4);
@@ -219,5 +226,7 @@
         private Label label3;
         private Label label4;
         private PictureBox pctrbox1;
+        private Control wmpPlayer;
+        private DataGridView dgvMovie;
     }
 }
