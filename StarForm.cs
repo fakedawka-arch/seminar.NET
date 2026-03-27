@@ -7,7 +7,7 @@ namespace Tyrtyvshin
 {
     public partial class StarForm : Form
     {
-        string connStr = "server=localhost;port=3308;database=movie;uid=root;pwd=Turuu66#;";                    
+        string connStr = "server=localhost;port=3310;database=movie;uid=root;pwd=Turuu76#;";                    
 
         public StarForm()
         {

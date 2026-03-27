@@ -41,7 +41,9 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            pctrbox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvMovies).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pctrbox1).BeginInit();
             SuspendLayout();
             // 
             // dgvMovies
@@ -52,12 +54,12 @@
             dgvMovies.ReadOnly = true;
             dgvMovies.Size = new Size(456, 288);
             dgvMovies.TabIndex = 0;
-            dgvMovies.CellClick += dgvMovies_CellClick;
-            dgvMovies.CellContentClick += dgvMovies_CellClick;
+            dgvMovies.CellClick += DgvMovies_CellClick;
+            dgvMovies.CellContentClick += DgvMovies_CellClick;
             // 
             // movieID
             // 
-            movieID.Location = new Point(482, 21);
+            movieID.Location = new Point(20, 360);
             movieID.Name = "movieID";
             movieID.ReadOnly = true;
             movieID.Size = new Size(100, 23);
@@ -65,21 +67,21 @@
             // 
             // title
             // 
-            title.Location = new Point(482, 158);
+            title.Location = new Point(20, 404);
             title.Name = "title";
             title.Size = new Size(100, 23);
             title.TabIndex = 2;
             // 
             // director
             // 
-            director.Location = new Point(482, 203);
+            director.Location = new Point(20, 448);
             director.Name = "director";
             director.Size = new Size(100, 23);
             director.TabIndex = 3;
             // 
             // year1
             // 
-            year1.Location = new Point(482, 244);
+            year1.Location = new Point(20, 492);
             year1.Name = "year1";
             year1.Size = new Size(100, 23);
             year1.TabIndex = 4;
@@ -128,7 +130,7 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(600, 24);
+            label1.Location = new Point(20, 386);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
             label1.TabIndex = 9;
@@ -138,7 +140,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.Highlight;
-            label2.Location = new Point(600, 166);
+            label2.Location = new Point(20, 430);
             label2.Name = "label2";
             label2.Size = new Size(27, 15);
             label2.TabIndex = 10;
@@ -148,7 +150,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = SystemColors.Highlight;
-            label3.Location = new Point(600, 206);
+            label3.Location = new Point(20, 474);
             label3.Name = "label3";
             label3.Size = new Size(48, 15);
             label3.TabIndex = 11;
@@ -158,17 +160,27 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = SystemColors.Highlight;
-            label4.Location = new Point(600, 252);
+            label4.Location = new Point(20, 518);
             label4.Name = "label4";
             label4.Size = new Size(29, 15);
             label4.TabIndex = 12;
             label4.Text = "year";
             // 
+            // pctrbox1
+            // 
+            pctrbox1.Location = new Point(512, 12);
+            pctrbox1.Name = "pctrbox1";
+            pctrbox1.Size = new Size(290, 288);
+            pctrbox1.TabIndex = 13;
+            pctrbox1.TabStop = false;
+            pctrbox1.Click += pictureBox1_Click;
+            // 
             // MovieForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(831, 510);
+            ClientSize = new Size(831, 625);
+            Controls.Add(pctrbox1);
             Controls.Add(label3);
             Controls.Add(label4);
             Controls.Add(label2);
@@ -186,6 +198,7 @@
             Text = "MovieForm";
             Load += MovieForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMovies).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pctrbox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -205,5 +218,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private PictureBox pctrbox1;
     }
 }

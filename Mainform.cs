@@ -13,7 +13,7 @@ namespace Tyrtyvshin
     public partial class Mainform : Form
     {
         private MovieForm? _movieForm;
-        private StarForm _starForm;
+        private StarForm? _starForm;
 
         public Mainform()
         {

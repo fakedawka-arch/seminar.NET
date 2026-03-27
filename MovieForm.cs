@@ -7,16 +7,16 @@ namespace Tyrtyvshin
 {
     public partial class MovieForm : Form
     {
-         string connStr = "server=localhost;port=3308;database=movie;uid=root;password=Turuu66#;";
-
+        string connStr = "server=localhost;port=3310;database=movie;uid=root;password=Turuu76#;";
+        private string _posterPath = ""; 
 
         public MovieForm()
 
         {
             InitializeComponent();
         }
-        
-        
+
+
         private void MovieForm_Load(object sender, EventArgs e)
 
         {
@@ -52,7 +52,7 @@ namespace Tyrtyvshin
 
                 if (result != null && result != DBNull.Value)
                 {
-                    string lastID = result.ToString() ??""; 
+                    string lastID = result.ToString() ?? "";
                     if (lastID.Length > 1)
                     {
                         int currentNumber = int.Parse(lastID.Substring(1)); // 105
@@ -170,20 +170,85 @@ namespace Tyrtyvshin
             year1.Clear();
             LoadMovieData();
         }
-        
-            
-        
 
-        private void dgvMovies_CellClick(object sender, DataGridViewCellEventArgs e)
+
+
+
+        private void DgvMovies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvMovies.Rows[e.RowIndex];
 
-                movieID.Text = row.Cells[0].Value?.ToString();
-                title.Text = row.Cells[1].Value?.ToString();
-                director.Text = row.Cells[2].Value?.ToString();
-                year1.Text = row.Cells[3].Value?.ToString();
+                movieID.Text = row.Cells["movieID"].Value?.ToString();
+                title.Text = row.Cells["title"].Value?.ToString();
+                director.Text = row.Cells["director"].Value?.ToString();
+                year1.Text = row.Cells["year1"].Value?.ToString();
+
+                string movieTitle = row.Cells["title"].Value?.ToString() ?? "";
+                string folderPath = Application.StartupPath;
+
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                string foundPath = FindPoster(folderPath, movieTitle);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
+                if (foundPath != null)
+                {
+                    pctrbox1.Image = Image.FromFile(foundPath);
+                    pctrbox1.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                else
+                {
+                    pctrbox1.Image = null;
+                }
+            }
+        }
+
+        private string? FindPoster(string folderPath, string movieTitle)
+        {
+            string[] extensions = { ".jpg", ".png", ".jpeg", ".jfif" };
+
+            string[] allFiles = Directory.GetFiles(folderPath, "*.*");
+
+            foreach (string file in allFiles)
+            {
+                string ext = Path.GetExtension(file).ToLower();
+
+                if (!new[] { ".jpg", ".png", ".jpeg", ".jfif" }.Contains(ext))
+                    continue;
+
+                string fileName = Path.GetFileNameWithoutExtension(file);
+
+                string normalizedFile = fileName.Replace("_", " ").Replace("-", " ").ToLower().Trim();
+                string normalizedTitle = movieTitle.Replace("_", " ").Replace("-", " ").ToLower().Trim();
+
+                if (normalizedFile == normalizedTitle)
+                {
+                    return file; 
+                }
+            }
+
+            return null;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    using (OpenFileDialog ofj = new OpenFileDialog())
+                    {
+                        ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                        ofd.Title = "Постер сонгох";
+
+                        if (ofd.ShowDialog() == DialogResult.OK)
+                        {
+                            _posterPath = ofd.FileName;
+                            pctrbox1.Image = Image.FromFile(ofd.FileName);
+                            pctrbox1.SizeMode = PictureBoxSizeMode.Zoom;
+                        }
+                    }
+                }
             }
         }
     }

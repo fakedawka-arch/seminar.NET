@@ -11,7 +11,7 @@ namespace Tyrtyvshin
     public partial class LoginForm : Form
 
     {
-        string connStr = "server=localhost;port=3308;database=movie;uid=root;password=Turuu66#;";
+        string connStr = "server=localhost;port=3310;database=movie;uid=root;password=Turuu76#;";
 
         MySqlConnection GetConnection()
         {
@@ -66,7 +66,6 @@ namespace Tyrtyvshin
             }
             catch (Exception ex)
             {
-                // image_38b917 дээрх шиг програм гацахаас сэргийлнэ
                 MessageBox.Show("Холболтын алдаа: " + ex.Message);
             }
         }
