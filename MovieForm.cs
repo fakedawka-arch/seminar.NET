@@ -2,13 +2,15 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;       
+using System.Media;
 
 namespace Tyrtyvshin
 {
     public partial class MovieForm : Form
     {
         string connStr = "server=localhost;port=3310;database=movie;uid=root;password=Turuu76#;";
-        private string _posterPath = ""; 
+        private string _posterPath = "";
 
         public MovieForm()
 
@@ -42,7 +44,7 @@ namespace Tyrtyvshin
         }
         private string GetNextID()
         {
-            string nextID = "M100"; // Хэрэв бааз бүр хоосон бол эхний утга
+            string nextID = "M100";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
@@ -176,15 +178,6 @@ namespace Tyrtyvshin
 
         private void DgvMovies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string? trailerPath = FindTrailer(folderPath, movieTitle);
-            if (trailerPath != null)
-            {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = trailerPath,
-                    UseShellExecute = true 
-                });
-            }
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvMovies.Rows[e.RowIndex];
@@ -197,8 +190,8 @@ namespace Tyrtyvshin
                 string movieTitle = row.Cells["title"].Value?.ToString() ?? "";
                 string folderPath = Application.StartupPath;
 
-                string? foundPath = FindPoster(folderPath, movieTitle);
 
+                string? foundPath = FindPoster(folderPath, movieTitle);
                 if (foundPath != null)
                 {
                     pctrbox1.Image = Image.FromFile(foundPath);
@@ -208,8 +201,11 @@ namespace Tyrtyvshin
                 {
                     pctrbox1.Image = null;
                 }
+
+
             }
         }
+
 
         private string? FindPoster(string folderPath, string movieTitle)
         {
@@ -231,7 +227,7 @@ namespace Tyrtyvshin
 
                 if (normalizedFile == normalizedTitle)
                 {
-                    return file; 
+                    return file;
                 }
             }
 
@@ -258,8 +254,174 @@ namespace Tyrtyvshin
                 }
             }
         }
+
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            {
+                {
+                    try
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(connStr))
+                        {
+                            conn.Open();
+                            string query = "SELECT movieID, title, director, year1 FROM movie WHERE title LIKE @s";
+                            MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                            adapter.SelectCommand.Parameters.AddWithValue("@s", "%" + txtSearch.Text + "%");
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dgvMovies.DataSource = dt;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Алдаа: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void tlbtnsave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nextID = GetNextID();
+
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    string query = "INSERT INTO movie (movieID, title, director, year1) VALUES (@id, @t, @d, @y)";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@id", nextID);
+                    cmd.Parameters.AddWithValue("@t", title.Text);
+                    cmd.Parameters.AddWithValue("@d", director.Text);
+                    cmd.Parameters.AddWithValue("@y", year1.Text);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Амжилттай нэмэгдлээ! Шинэ ID: " + nextID);
+
+                    LoadMovieData();
+                    Clear_Click(sender, e);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Алдаа: " + ex.Message); }
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tlbtndelete_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    using (MySqlConnection conn = new MySqlConnection(connStr))
+                    {
+                        conn.Open();
+                        string query = "DELETE FROM movie WHERE movieID=@id";
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        MySqlParameter mySqlParameter = cmd.Parameters.AddWithValue("@id", movieID.Text);
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Устгагдлаа!");
+
+                        LoadMovieData();
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show("Алдаа: " + ex.Message); }
+            }
+        }
+
+        private void tlbtnclear_Click(object sender, EventArgs e)
+        {
+            movieID.Clear();
+            title.Clear();
+            director.Clear();
+            year1.Clear();
+            LoadMovieData();
+        }
+
+        private void tlbtnupdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    string query = "UPDATE movie SET title=@t, director=@d, year1=@y WHERE movieID=@id";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@id", movieID.Text);
+                    cmd.Parameters.AddWithValue("@t", title.Text);
+                    cmd.Parameters.AddWithValue("@d", director.Text);
+                    cmd.Parameters.AddWithValue("@y", year1.Text);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Мэдээлэл засагдлаа!");
+
+                    LoadMovieData();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Алдаа: " + ex.Message); }
+        }
+
+        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnopenvideo_Click(object sender, EventArgs e)
+        {
+            //mediaPlayer.URL = "e:\\stack.mp4";
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "video files (*.mp4)|*.mp4";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    mediaplayer.URL = filePath;
+                }
+            }
+        }
+
+        private void tlbtnsearch_Click(object sender, EventArgs e)
+        {
+            {
+                {
+                    try
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(connStr))
+                        {
+                            conn.Open();
+                            string query = "SELECT movieID, title, director, year1 FROM movie WHERE title LIKE @s";
+                            MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                            adapter.SelectCommand.Parameters.AddWithValue("@s", "%" + txtSearch.Text + "%");
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dgvMovies.DataSource = dt;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Алдаа: " + ex.Message);
+                    }
+                }
+            }
+        }
     }
 }
+    
+   
+
 
 
 

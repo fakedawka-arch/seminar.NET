@@ -78,7 +78,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(100, 23);
             txtPassword.TabIndex = 6;
-            txtPassword.Text = "Turuu1";
+            txtPassword.Text = "Turuu67";
             // 
             // LoginForm
             // 
