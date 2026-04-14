@@ -38,7 +38,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(117, 182);
+            label1.Location = new Point(54, 206);
             label1.Name = "label1";
             label1.Size = new Size(57, 15);
             label1.TabIndex = 0;
@@ -47,7 +47,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(117, 136);
+            label2.Location = new Point(54, 160);
             label2.Name = "label2";
             label2.Size = new Size(64, 15);
             label2.TabIndex = 3;
@@ -55,7 +55,7 @@
             // 
             // btnlogin
             // 
-            btnlogin.Location = new Point(115, 229);
+            btnlogin.Location = new Point(52, 253);
             btnlogin.Name = "btnlogin";
             btnlogin.Size = new Size(75, 23);
             btnlogin.TabIndex = 4;
@@ -65,7 +65,7 @@
             // 
             // txtUserName
             // 
-            txtUserName.Location = new Point(117, 154);
+            txtUserName.Location = new Point(54, 178);
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new Size(100, 23);
             txtUserName.TabIndex = 5;
@@ -74,7 +74,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(115, 200);
+            txtPassword.Location = new Point(52, 224);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(100, 23);
             txtPassword.TabIndex = 6;
@@ -84,7 +84,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(424, 450);
+            ClientSize = new Size(227, 450);
             Controls.Add(txtPassword);
             Controls.Add(txtUserName);
             Controls.Add(btnlogin);
