@@ -637,28 +637,6 @@ namespace Tyrtyvshin
             LoadMovies(null);
         }
 
-        private void StyleButton(Button btn, string text, Color color)
-        {
-            btn.Text = text;
-            btn.BackColor = color;
-            btn.ForeColor = Color.White;
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderSize = 0;
-            btn.Font = new Font("Segoe UI", 9f, FontStyle.Bold);
-            btn.Cursor = Cursors.Hand;
-            btn.Height = 36;
-        }
-
-        private void StyleTextBox(TextBox tb)
-        {
-            tb.BackColor = Color.FromArgb(30, 25, 50);
-            tb.ForeColor = Color.FromArgb(220, 200, 255);
-            tb.BorderStyle = BorderStyle.FixedSingle;
-            tb.Font = new Font("Segoe UI", 10f);
-        }
-
-
-
         private void DgvMovies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -770,7 +748,7 @@ namespace Tyrtyvshin
             foreach (string file in allFiles)
             {
                 string ext = Path.GetExtension(file).ToLower();
-                if (!new[] { ".mp4", ".wav", ".avi", ".mkv" }.Contains(ext)) continue; // ← жижиг үсэг
+                if (!new[] { ".mp4", ".wav", ".avi", ".mkv" }.Contains(ext)) continue;
 
                 string fileName = Path.GetFileNameWithoutExtension(file);
                 string normalizedFile = fileName.Replace("_", " ").Replace("-", " ").ToLower().Trim();
@@ -827,14 +805,9 @@ namespace Tyrtyvshin
             }
         }
 
-        private void webView_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void webView21_Click(object sender, EventArgs e)
         {
-            // No-op: navigation is handled on load + row selection.
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
