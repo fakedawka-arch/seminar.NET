@@ -7,11 +7,12 @@ using System.Windows.Forms;
 namespace Tyrtyvshin
 {
 
+
     public partial class LoginForm : Form
 
     {
-        string connStr = "server=localhost;port=3310;database=movie;uid=root;password=Turuu76#;";
-        //string connStr = "server=localhost;port=3306;database=gf;uid=root;pwd=;";
+        // string connStr = "server=localhost;port=3310;database=movie;uid=root;password=Turuu76#;";
+        string connStr = "server=localhost;port=3306;database=gf;uid=root;pwd=;";
 
         MySqlConnection GetConnection()
         {

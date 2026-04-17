@@ -29,7 +29,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BlueFox.IBLL" Version="1.0.40" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3908-prerelease" />
 		<PackageReference Include="MySql.Data" Version="9.6.0" />
 	</ItemGroup>
