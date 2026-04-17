@@ -55,16 +55,20 @@
             // 
             // btnlogin
             // 
+            btnlogin.BackColor = Color.Lime;
+            btnlogin.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnlogin.Location = new Point(52, 253);
             btnlogin.Name = "btnlogin";
             btnlogin.Size = new Size(75, 23);
             btnlogin.TabIndex = 4;
             btnlogin.Text = "login";
-            btnlogin.UseVisualStyleBackColor = true;
+            btnlogin.UseVisualStyleBackColor = false;
             btnlogin.Click += btnlogin_Click;
             // 
             // txtUserName
             // 
+            txtUserName.BackColor = SystemColors.MenuText;
+            txtUserName.ForeColor = SystemColors.Menu;
             txtUserName.Location = new Point(54, 178);
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new Size(100, 23);
@@ -74,6 +78,8 @@
             // 
             // txtPassword
             // 
+            txtPassword.BackColor = SystemColors.InactiveCaptionText;
+            txtPassword.ForeColor = SystemColors.Menu;
             txtPassword.Location = new Point(52, 224);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(100, 23);
@@ -84,7 +90,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(227, 450);
+            BackColor = Color.FromArgb(255, 255, 192);
+            ClientSize = new Size(261, 455);
             Controls.Add(txtPassword);
             Controls.Add(txtUserName);
             Controls.Add(btnlogin);

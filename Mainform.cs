@@ -8,7 +8,7 @@ namespace Tyrtyvshin
         public Mainform()
         {
             InitializeComponent();
-            ApplyTheme();
+            
             ShowHome();
         }
 
@@ -22,50 +22,6 @@ namespace Tyrtyvshin
             public static readonly Color Muted = Color.FromArgb(156, 163, 175);      
         }
 
-        private void ApplyTheme()
-        {
-            Font = new Font("Segoe UI", 10f);
-            BackColor = UiTheme.Background;
-            ForeColor = UiTheme.Text;
-
-            sidebarPanel.BackColor = UiTheme.Surface;
-            navHeaderPanel.BackColor = UiTheme.Surface;
-            topBarPanel.BackColor = UiTheme.Surface;
-            contentPanel.BackColor = UiTheme.Background;
-
-            lblAppName.ForeColor = Color.White;
-            lblPageTitle.ForeColor = Color.White;
-
-            StyleNavButton(btnNavMovies);
-            StyleNavButton(btnNavReviewers);
-            StyleNavButton(btnNavReports);
-            StyleNavButton(btnNavSettings);
-            StyleNavButton(btnNavLogout, isLogout: true);
-        }
-
-        private void StyleNavButton(Button btn, bool isLogout = false)
-        {
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderSize = 0;
-            btn.TextAlign = ContentAlignment.MiddleLeft;
-            btn.Padding = new Padding(16, 0, 0, 0);
-            btn.Font = new Font("Segoe UI", 10f, FontStyle.Bold);
-            btn.Cursor = Cursors.Hand;
-
-            btn.BackColor = UiTheme.Surface;
-            btn.ForeColor = isLogout ? UiTheme.Muted : UiTheme.Text;
-
-            btn.MouseEnter += (s, e) =>
-            {
-                if (_currentNavButton == btn) return;
-                btn.BackColor = UiTheme.Surface2;
-            };
-            btn.MouseLeave += (s, e) =>
-            {
-                if (_currentNavButton == btn) return;
-                btn.BackColor = UiTheme.Surface;
-            };
-        }
 
         private void SetActiveNav(Button btn)
         {
@@ -165,8 +121,9 @@ namespace Tyrtyvshin
 
         private void btnNavReports_Click(object sender, EventArgs e)
         {
-            var page = new PlaceholderPage("Reports", "Top Movies / Top Reviewers dashboards will be added next.");
-            ShowPage(page, "Reports", btnNavReports);
+            StarForm stf = new StarForm();
+            stf .ShowDialog();
+            this .Hide();
         }
 
         private void btnNavSettings_Click(object sender, EventArgs e)

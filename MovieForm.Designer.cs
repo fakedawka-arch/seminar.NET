@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovieForm));
             dgvMovies = new DataGridView();
             movieID = new TextBox();
             title = new TextBox();
@@ -48,7 +49,12 @@
             label5 = new Label();
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             groupBox1 = new GroupBox();
+            toolStrip1 = new ToolStrip();
             button1 = new Button();
+            dateTimePicker1 = new DateTimePicker();
+            comboBox1 = new ComboBox();
+            process1 = new System.Diagnostics.Process();
+            comboBox2 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvMovies).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pctrbox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
@@ -62,8 +68,6 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(124, 58, 237);
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
             dgvMovies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvMovies.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            dgvMovies.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
             dgvMovies.BackgroundColor = Color.FromArgb(11, 16, 32);
             dgvMovies.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -75,222 +79,187 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvMovies.DefaultCellStyle = dataGridViewCellStyle2;
             dgvMovies.GridColor = Color.FromArgb(31, 41, 55);
-            dgvMovies.Location = new Point(515, 43);
-            dgvMovies.Margin = new Padding(4, 3, 4, 3);
+            resources.ApplyResources(dgvMovies, "dgvMovies");
             dgvMovies.Name = "dgvMovies";
             dgvMovies.ReadOnly = true;
             dgvMovies.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            dgvMovies.Size = new Size(854, 335);
             dgvMovies.StandardTab = true;
-            dgvMovies.TabIndex = 0;
             dgvMovies.CellClick += DgvMovies_CellClick;
             // 
             // movieID
             // 
             movieID.BackColor = SystemColors.Highlight;
-            movieID.Location = new Point(13, 756);
-            movieID.Margin = new Padding(4, 3, 4, 3);
+            resources.ApplyResources(movieID, "movieID");
             movieID.Name = "movieID";
             movieID.ReadOnly = true;
-            movieID.Size = new Size(128, 25);
-            movieID.TabIndex = 1;
             movieID.TextChanged += movieID_TextChanged;
             // 
             // title
             // 
             title.BackColor = SystemColors.InactiveCaption;
-            title.Location = new Point(13, 697);
-            title.Margin = new Padding(4, 3, 4, 3);
+            resources.ApplyResources(title, "title");
             title.Name = "title";
-            title.Size = new Size(128, 25);
-            title.TabIndex = 2;
             // 
             // director
             // 
             director.BackColor = SystemColors.InactiveCaption;
-            director.Location = new Point(13, 635);
-            director.Margin = new Padding(4, 3, 4, 3);
+            resources.ApplyResources(director, "director");
             director.Name = "director";
-            director.Size = new Size(128, 25);
-            director.TabIndex = 3;
             // 
             // year1
             // 
             year1.BackColor = SystemColors.InactiveCaption;
-            year1.Location = new Point(13, 572);
-            year1.Margin = new Padding(4, 3, 4, 3);
+            resources.ApplyResources(year1, "year1");
             year1.Name = "year1";
-            year1.Size = new Size(128, 25);
-            year1.TabIndex = 4;
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.AntiqueWhite;
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Location = new Point(19, 8);
-            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.BackColor = SystemColors.Desktop;
+            resources.ApplyResources(btnSave, "btnSave");
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(97, 28);
-            btnSave.TabIndex = 5;
-            btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
             // btndelete
             // 
-            btndelete.FlatStyle = FlatStyle.Flat;
-            btndelete.Font = new Font("Snap ITC", 11.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            resources.ApplyResources(btndelete, "btndelete");
             btndelete.ForeColor = Color.Red;
-            btndelete.Location = new Point(124, 8);
-            btndelete.Margin = new Padding(4, 3, 4, 3);
             btndelete.Name = "btndelete";
-            btndelete.Size = new Size(97, 28);
-            btndelete.TabIndex = 6;
-            btndelete.Text = "Delete";
             btndelete.UseVisualStyleBackColor = true;
             btndelete.Click += btndelete_Click;
             // 
             // btnupdate
             // 
-            btnupdate.FlatStyle = FlatStyle.Flat;
+            resources.ApplyResources(btnupdate, "btnupdate");
             btnupdate.ForeColor = Color.DarkGreen;
-            btnupdate.Location = new Point(229, 8);
-            btnupdate.Margin = new Padding(4, 3, 4, 3);
             btnupdate.Name = "btnupdate";
-            btnupdate.Size = new Size(97, 28);
-            btnupdate.TabIndex = 7;
-            btnupdate.Text = "Update";
             btnupdate.UseVisualStyleBackColor = true;
             btnupdate.Click += btnupdate_Click;
             // 
             // Clear
             // 
-            Clear.FlatStyle = FlatStyle.Flat;
-            Clear.Location = new Point(334, 9);
-            Clear.Margin = new Padding(4, 3, 4, 3);
+            resources.ApplyResources(Clear, "Clear");
             Clear.Name = "Clear";
-            Clear.Size = new Size(97, 28);
-            Clear.TabIndex = 8;
-            Clear.Text = "Clear";
             Clear.UseVisualStyleBackColor = true;
             Clear.Click += Clear_Click;
             // 
             // label1
             // 
-            label1.AutoSize = true;
+            resources.ApplyResources(label1, "label1");
             label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(13, 725);
-            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(23, 19);
-            label1.TabIndex = 9;
-            label1.Text = "ID";
             // 
             // label2
             // 
-            label2.AutoSize = true;
+            resources.ApplyResources(label2, "label2");
             label2.ForeColor = SystemColors.Highlight;
-            label2.Location = new Point(13, 676);
-            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(32, 19);
-            label2.TabIndex = 10;
-            label2.Text = "title";
             // 
             // label3
             // 
-            label3.AutoSize = true;
+            resources.ApplyResources(label3, "label3");
             label3.ForeColor = SystemColors.Highlight;
-            label3.Location = new Point(13, 614);
-            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(56, 19);
-            label3.TabIndex = 11;
-            label3.Text = "director";
             // 
             // label4
             // 
-            label4.AutoSize = true;
+            resources.ApplyResources(label4, "label4");
             label4.ForeColor = SystemColors.Highlight;
-            label4.Location = new Point(13, 551);
-            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(35, 19);
-            label4.TabIndex = 12;
-            label4.Text = "year";
             // 
             // pctrbox1
             // 
             pctrbox1.BackColor = Color.Honeydew;
-            pctrbox1.Location = new Point(13, 43);
-            pctrbox1.Margin = new Padding(4, 3, 4, 3);
+            resources.ApplyResources(pctrbox1, "pctrbox1");
             pctrbox1.Name = "pctrbox1";
-            pctrbox1.Size = new Size(489, 488);
-            pctrbox1.TabIndex = 13;
             pctrbox1.TabStop = false;
             pctrbox1.Click += pictureBox1_Click;
             // 
             // txtsearch
             // 
             txtsearch.ForeColor = SystemColors.MenuBar;
-            txtsearch.Location = new Point(801, 8);
+            resources.ApplyResources(txtsearch, "txtsearch");
             txtsearch.Name = "txtsearch";
-            txtsearch.Size = new Size(568, 25);
-            txtsearch.TabIndex = 15;
             txtsearch.TextChanged += txtsearch_TextChanged;
             // 
             // label5
             // 
-            label5.AutoSize = true;
+            resources.ApplyResources(label5, "label5");
             label5.ForeColor = Color.FromArgb(255, 255, 128);
-            label5.Location = new Point(682, 11);
             label5.Name = "label5";
-            label5.Size = new Size(48, 19);
-            label5.TabIndex = 16;
-            label5.Text = "search";
             // 
             // webView21
             // 
             webView21.AllowExternalDrop = true;
             webView21.CreationProperties = null;
             webView21.DefaultBackgroundColor = Color.FromArgb(11, 16, 32);
-            webView21.Location = new Point(0, 24);
+            resources.ApplyResources(webView21, "webView21");
             webView21.Name = "webView21";
-            webView21.Size = new Size(833, 346);
-            webView21.TabIndex = 17;
             webView21.ZoomFactor = 1D;
             webView21.Click += webView21_Click;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(toolStrip1);
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(webView21);
-            groupBox1.Location = new Point(508, 384);
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(856, 485);
-            groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Trailer";
+            // 
+            // toolStrip1
+            // 
+            resources.ApplyResources(toolStrip1, "toolStrip1");
+            toolStrip1.Name = "toolStrip1";
             // 
             // button1
             // 
             button1.BackColor = Color.LawnGreen;
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(13, 392);
+            resources.ApplyResources(button1, "button1");
             button1.Name = "button1";
-            button1.Size = new Size(826, 33);
-            button1.TabIndex = 18;
-            button1.Text = "Open current trailer in browser";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // dateTimePicker1
+            // 
+            resources.ApplyResources(dateTimePicker1, "dateTimePicker1");
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { resources.GetString("comboBox1.Items") });
+            resources.ApplyResources(comboBox1, "comboBox1");
+            comboBox1.Name = "comboBox1";
+            // 
+            // process1
+            // 
+            process1.StartInfo.Domain = "";
+            process1.StartInfo.LoadUserProfile = false;
+            process1.StartInfo.Password = null;
+            process1.StartInfo.StandardErrorEncoding = null;
+            process1.StartInfo.StandardInputEncoding = null;
+            process1.StartInfo.StandardOutputEncoding = null;
+            process1.StartInfo.UseCredentialsForNetworkingOnly = false;
+            process1.StartInfo.UserName = "";
+            process1.SynchronizingObject = this;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            resources.ApplyResources(comboBox2, "comboBox2");
+            comboBox2.Name = "comboBox2";
+            // 
             // MovieForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             BackColor = Color.FromArgb(11, 16, 32);
-            ClientSize = new Size(1487, 881);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
+            Controls.Add(dateTimePicker1);
             Controls.Add(groupBox1);
             Controls.Add(label5);
             Controls.Add(dgvMovies);
@@ -308,17 +277,15 @@
             Controls.Add(director);
             Controls.Add(title);
             Controls.Add(movieID);
-            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(229, 231, 235);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 3, 4, 3);
             Name = "MovieForm";
-            Text = "MovieForm";
             Load += MovieForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMovies).EndInit();
             ((System.ComponentModel.ISupportInitialize)pctrbox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -345,5 +312,10 @@
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private GroupBox groupBox1;
         private Button button1;
+        private DateTimePicker dateTimePicker1;
+        private ComboBox comboBox1;
+        private ToolStrip toolStrip1;
+        private System.Diagnostics.Process process1;
+        private ComboBox comboBox2;
     }
 }
