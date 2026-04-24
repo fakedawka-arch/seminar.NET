@@ -137,7 +137,7 @@ namespace Tyrtyvshin
             searchBar.Controls.Add(label5);
 
             // Grid
-            dgvMovies.Dock = DockStyle.Fill;
+            dgvMovies.Dock = DockStyle.None;
             dgvMovies.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 
             gridCard.Controls.Clear();
