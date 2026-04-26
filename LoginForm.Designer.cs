@@ -2,107 +2,135 @@
 {
     partial class LoginForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            btnlogin = new Button();
+            lblTitle = new Label();
+            lblSubtitle = new Label();
+            lblUser = new Label();
             txtUserName = new TextBox();
+            lblPass = new TextBox();
             txtPassword = new TextBox();
+            btnlogin = new Button();
+            lblError = new Label();
             SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(54, 206);
-            label1.Name = "label1";
-            label1.Size = new Size(57, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Password";
+            lblTitle.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitle.ForeColor = Color.Crimson;
+            lblTitle.Location = new Point(40, 52);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(340, 57);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "🎬 Movie";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lblSubtitle
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(54, 160);
-            label2.Name = "label2";
-            label2.Size = new Size(64, 15);
-            label2.TabIndex = 3;
-            label2.Text = "UserNAme";
+            lblSubtitle.BackColor = Color.SteelBlue;
+            lblSubtitle.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSubtitle.ForeColor = Color.LightGreen;
+            lblSubtitle.Location = new Point(40, 109);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(340, 40);
+            lblSubtitle.TabIndex = 1;
+            lblSubtitle.Text = "Системд нэвтрэх";
+            lblSubtitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // btnlogin
+            // lblUser
             // 
-            btnlogin.Location = new Point(52, 253);
-            btnlogin.Name = "btnlogin";
-            btnlogin.Size = new Size(75, 23);
-            btnlogin.TabIndex = 4;
-            btnlogin.Text = "login";
-            btnlogin.UseVisualStyleBackColor = true;
-            btnlogin.Click += btnlogin_Click;
+            lblUser.ForeColor = SystemColors.ButtonFace;
+            lblUser.Location = new Point(40, 160);
+            lblUser.Name = "lblUser";
+            lblUser.Size = new Size(340, 20);
+            lblUser.TabIndex = 2;
+            lblUser.Text = "ХЭРЭГЛЭГЧИЙН НЭР";
             // 
             // txtUserName
             // 
-            txtUserName.Location = new Point(54, 178);
+            txtUserName.Location = new Point(40, 183);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(100, 23);
-            txtUserName.TabIndex = 5;
-            txtUserName.Text = "Turuu";
+            txtUserName.Size = new Size(340, 23);
+            txtUserName.TabIndex = 0;
             txtUserName.TextChanged += txtUserName_TextChanged;
+            // 
+            // lblPass
+            // 
+            lblPass.BackColor = Color.DarkSlateBlue;
+            lblPass.ForeColor = SystemColors.Menu;
+            lblPass.Location = new Point(40, 234);
+            lblPass.Name = "lblPass";
+            lblPass.Size = new Size(340, 23);
+            lblPass.TabIndex = 3;
+            lblPass.Text = "НУУЦ ҮГ";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(52, 224);
+            txtPassword.Location = new Point(40, 263);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(100, 23);
-            txtPassword.TabIndex = 6;
-            txtPassword.Text = "Turuu1";
+            txtPassword.Size = new Size(340, 23);
+            txtPassword.TabIndex = 1;
+            txtPassword.TextChanged += txtPassword_TextChanged;
+            // 
+            // btnlogin
+            // 
+            btnlogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnlogin.ForeColor = Color.Green;
+            btnlogin.Location = new Point(40, 292);
+            btnlogin.Name = "btnlogin";
+            btnlogin.Size = new Size(340, 45);
+            btnlogin.TabIndex = 2;
+            btnlogin.Text = "Нэвтрэх";
+            btnlogin.Click += btnlogin_Click;
+            // 
+            // lblError
+            // 
+            lblError.Font = new Font("Segoe UI", 9F);
+            lblError.ForeColor = Color.FromArgb(239, 68, 68);
+            lblError.Location = new Point(40, 385);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(340, 25);
+            lblError.TabIndex = 4;
+            lblError.TextAlign = ContentAlignment.MiddleCenter;
+            lblError.Visible = false;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(227, 450);
-            Controls.Add(txtPassword);
+            BackColor = Color.DarkSlateBlue;
+            ClientSize = new Size(420, 520);
+            Controls.Add(lblTitle);
+            Controls.Add(lblSubtitle);
+            Controls.Add(lblUser);
             Controls.Add(txtUserName);
+            Controls.Add(lblPass);
+            Controls.Add(txtPassword);
             Controls.Add(btnlogin);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblError);
             Name = "LoginForm";
-            Text = "LoginForm";
+            Text = "Нэвтрэх";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
-        #endregion
-
-        private Label label1;
-        private Label label2;
-        private Button btnlogin;
+        private Label lblTitle;
+        private Label lblSubtitle;
+        private Label lblUser;
         private TextBox txtUserName;
+        private TextBox lblPass;      // ← Label болгоно
         private TextBox txtPassword;
+        private Button btnlogin;
+        private Label lblError;
     }
 }

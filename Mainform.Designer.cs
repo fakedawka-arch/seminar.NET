@@ -39,6 +39,7 @@ namespace Tyrtyvshin
             topBarPanel = new Panel();
             lblPageTitle = new Label();
             contentPanel = new Panel();
+            btnrate = new Button();
             sidebarPanel.SuspendLayout();
             navHeaderPanel.SuspendLayout();
             topBarPanel.SuspendLayout();
@@ -46,6 +47,7 @@ namespace Tyrtyvshin
             // 
             // sidebarPanel
             // 
+            sidebarPanel.Controls.Add(btnrate);
             sidebarPanel.Controls.Add(btnNavSettings);
             sidebarPanel.Controls.Add(btnNavReports);
             sidebarPanel.Controls.Add(btnNavReviewers);
@@ -55,7 +57,7 @@ namespace Tyrtyvshin
             sidebarPanel.Dock = DockStyle.Left;
             sidebarPanel.Location = new Point(0, 0);
             sidebarPanel.Name = "sidebarPanel";
-            sidebarPanel.Size = new Size(240, 600);
+            sidebarPanel.Size = new Size(240, 852);
             sidebarPanel.TabIndex = 0;
             // 
             // btnNavSettings
@@ -125,7 +127,7 @@ namespace Tyrtyvshin
             // btnNavLogout
             // 
             btnNavLogout.Dock = DockStyle.Bottom;
-            btnNavLogout.Location = new Point(0, 556);
+            btnNavLogout.Location = new Point(0, 808);
             btnNavLogout.Name = "btnNavLogout";
             btnNavLogout.Size = new Size(240, 44);
             btnNavLogout.TabIndex = 5;
@@ -140,7 +142,7 @@ namespace Tyrtyvshin
             topBarPanel.Location = new Point(240, 0);
             topBarPanel.Name = "topBarPanel";
             topBarPanel.Padding = new Padding(16, 14, 16, 14);
-            topBarPanel.Size = new Size(760, 56);
+            topBarPanel.Size = new Size(1162, 56);
             topBarPanel.TabIndex = 1;
             // 
             // lblPageTitle
@@ -158,14 +160,25 @@ namespace Tyrtyvshin
             contentPanel.Dock = DockStyle.Fill;
             contentPanel.Location = new Point(240, 56);
             contentPanel.Name = "contentPanel";
-            contentPanel.Size = new Size(760, 544);
+            contentPanel.Size = new Size(1162, 796);
             contentPanel.TabIndex = 2;
+            // 
+            // btnrate
+            // 
+            btnrate.Dock = DockStyle.Top;
+            btnrate.Location = new Point(0, 248);
+            btnrate.Name = "btnrate";
+            btnrate.Size = new Size(240, 44);
+            btnrate.TabIndex = 6;
+            btnrate.Text = "Rate";
+            btnrate.UseVisualStyleBackColor = true;
+            btnrate.Click += button1_Click;
             // 
             // Mainform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 600);
+            ClientSize = new Size(1402, 852);
             Controls.Add(contentPanel);
             Controls.Add(topBarPanel);
             Controls.Add(sidebarPanel);
@@ -191,5 +204,6 @@ namespace Tyrtyvshin
         private Panel topBarPanel;
         private Label lblPageTitle;
         private Panel contentPanel;
+        private Button btnrate;
     }
 }

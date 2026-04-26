@@ -11,6 +11,9 @@
     <Compile Update="MovieForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="reviewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="StarForm.cs">
       <SubType>Form</SubType>
     </Compile>

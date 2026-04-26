@@ -1,3 +1,6 @@
+using System.Runtime.CompilerServices;
+using TyrtyvshinGl;
+
 namespace Tyrtyvshin
 {
     public partial class Mainform : Form
@@ -14,12 +17,12 @@ namespace Tyrtyvshin
 
         private static class UiTheme
         {
-            public static readonly Color Background = Color.FromArgb(11, 16, 32);    
-            public static readonly Color Surface = Color.FromArgb(17, 26, 46);       
-            public static readonly Color Surface2 = Color.FromArgb(15, 23, 48);      
-            public static readonly Color Accent = Color.FromArgb(124, 58, 237);     
-            public static readonly Color Text = Color.FromArgb(229, 231, 235);      
-            public static readonly Color Muted = Color.FromArgb(156, 163, 175);      
+            public static readonly Color Background = Color.FromArgb(11, 16, 32);
+            public static readonly Color Surface = Color.FromArgb(17, 26, 46);
+            public static readonly Color Surface2 = Color.FromArgb(15, 23, 48);
+            public static readonly Color Accent = Color.FromArgb(124, 58, 237);
+            public static readonly Color Text = Color.FromArgb(229, 231, 235);
+            public static readonly Color Muted = Color.FromArgb(156, 163, 175);
         }
 
         private void ApplyTheme()
@@ -150,17 +153,35 @@ namespace Tyrtyvshin
 
         private void btnNavMovies_Click(object sender, EventArgs e)
         {
-            var page = new PlaceholderPage("Movies", "Movie list page will be added next.");
-            ShowPage(page, "Movies", btnNavMovies);
+            contentPanel.Controls.Clear();
+
             MovieForm mf = new MovieForm();
-            mf.ShowDialog();
-            this.Hide();
+            mf.TopLevel = false;
+            mf.FormBorderStyle = FormBorderStyle.None;
+            mf.Dock = DockStyle.Fill;
+            contentPanel.Controls.Add(mf);
+            mf.Show();
+            SetActiveNav(btnNavMovies);
+            lblPageTitle.Text = "Movies";
         }
 
         private void btnNavReviewers_Click(object sender, EventArgs e)
         {
             var page = new PlaceholderPage("Reviewers", "Reviewer management page will be added next.");
             ShowPage(page, "Reviewers", btnNavReviewers);
+            contentPanel.Controls.Clear();
+
+            reviewerForm mf = new reviewerForm();
+            mf.TopLevel = false;
+            mf.FormBorderStyle = FormBorderStyle.None;
+            mf.Dock = DockStyle.Fill;
+            contentPanel.Controls.Add(mf);
+            mf.Show();
+            SetActiveNav(btnNavMovies);
+            lblPageTitle.Text = "reviewers";
+
+
+
         }
 
         private void btnNavReports_Click(object sender, EventArgs e)
@@ -180,6 +201,21 @@ namespace Tyrtyvshin
             var login = new LoginForm();
             login.Show();
             Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+
+            StarForm sf = new StarForm();
+            sf.TopLevel = false;
+            sf.FormBorderStyle = FormBorderStyle.None;
+            sf.Dock = DockStyle.Fill;
+            contentPanel.Controls.Add(sf);
+            sf.Show();
+            SetActiveNav(btnrate);
+            lblPageTitle.Text = "Star";
+
         }
     }
 }
